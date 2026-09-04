@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento | Beauty Care</title>
+  <meta name="description" content="Solicite seu horário no Salão Beauty Care preenchendo o formulário de agendamento.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/logo.png" alt="Beauty Care">
+      </a>
+
+      <input type="checkbox" id="menuToggle" class="menu-toggle-input">
+      <label for="menuToggle" class="menu-toggle" aria-label="Abrir ou fechar menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="agendamento.html" aria-current="page">Agendamento</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro container">
+      <h1>Solicitar agendamento</h1>
+      <p>Preencha o formulário abaixo. Entraremos em contato para confirmar o horário.</p>
+    </section>
+
+    <section class="container form-section" aria-labelledby="form-titulo">
+      <h2 id="form-titulo" class="sr-only">Formulário de agendamento</h2>
+
+      <form id="formAgendamento" novalidate>
+
+        <div class="form-group">
+          <label for="nome">Nome *</label>
+          <input type="text" id="nome" name="nome" required minlength="3"
+                 placeholder="Digite seu nome completo">
+        </div>
+
+        <div class="form-group">
+          <label for="telefoneFixo">Telefone</label>
+          <input type="tel" id="telefoneFixo" name="telefoneFixo"
+                 pattern="\(?\d{2}\)?\s?\d{4}-?\d{4}"
+                 placeholder="(27) 3333-3333">
+        </div>
+
+        <div class="form-group">
+          <label for="celular">Celular *</label>
+          <input type="tel" id="celular" name="celular" required
+                 pattern="\(?\d{2}\)?\s?\d{4,5}-?\d{4}"
+                 placeholder="(27) 99999-9999">
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" required
+                 placeholder="seuemail@exemplo.com">
+        </div>
+
+        <div class="form-group">
+          <label for="servico">Serviço *</label>
+          <select id="servico" name="servico" required>
+            <option value="">Selecione um serviço</option>
+            <option value="corte-feminino">Corte feminino</option>
+            <option value="corte-masculino">Corte masculino</option>
+            <option value="coloracao">Coloração</option>
+            <option value="manicure">Manicure</option>
+            <option value="pedicure">Pedicure</option>
+            <option value="escova-hidratacao">Escova e hidratação</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="outroServico">Caso tenha selecionado "Outro", descreva o serviço</label>
+          <input type="text" id="outroServico" name="outroServico"
+                 placeholder="Descreva o serviço desejado (opcional)">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="data">Data *</label>
+            <input type="date" id="data" name="data" required>
+          </div>
+
+          <div class="form-group">
+            <label for="horario">Horário *</label>
+            <select id="horario" name="horario" required>
+              <option value="">Selecione</option>
+              <option value="9:00">09:00 - 10:00</option>
+              <option value="10:00">10:00 - 11:00</option>
+              <option value="11:00">11:00 - 12:00</option>
+              <option value="12:00">12:00 - 13:00</option>
+              <option value="13:00">13:00 - 14:00</option>
+              <option value="14:00">14:00 - 15:00</option>
+              <option value="15:00">15:00 - 16:00</option>
+              <option value="16:00">16:00 - 17:00</option>
+              <option value="17:00">17:00 - 18:00</option>
+              <option value="18:00">18:00 - 19:00</option>
+            </select>
+          </div>
+        </div>
+        <p class="aviso-horario">Sábados: atendimento até as 17h. Não atendemos aos domingos.</p>
+
+        <div class="form-group">
+          <label for="observacoes">Observações</label>
+          <textarea id="observacoes" name="observacoes" rows="4" maxlength="300"
+                    placeholder="Alguma preferência ou observação? (opcional)"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar solicitação</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Salão Beauty Care. Todos os direitos reservados.</p>
+      <p>Rua das Flores, 123, Centro de Vitória - ES | (27) 99999-9999</p>
+    </div>
+  </footer>
+
+</body>
+</html>

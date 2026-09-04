@@ -1,0 +1,442 @@
+/* =========================================
+   RESET BÁSICO E VARIÁVEIS
+========================================= */
+:root {
+  --cor-primaria: #ce5c5c;
+  --cor-primaria-escura: #ce5c5c;
+  --cor-secundaria: #f6e9ee;
+  --cor-texto: #2f2a2d;
+  --cor-texto-claro: #6c6468;
+  --cor-fundo: #fff7f7;
+  --cor-borda: #ffcaca;
+  --cor-erro: #c62828;
+  --cor-sucesso: #2e7d32;
+  --fonte-titulo: "Georgia", "Times New Roman", serif;
+  --fonte-texto: "Segoe UI", Arial, Helvetica, sans-serif;
+  --raio: 10px;
+  --sombra: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-primaria-escura);
+  line-height: 1.25;
+}
+
+h1 { font-size: 30px; margin-bottom: 1rem; margin-top: 1rem;}
+h2 { font-size: 30px; margin-bottom: 1rem; margin-top: 1rem;}
+h3 { font-size: 30px; margin-bottom: 1rem; margin-top: 1rem;}
+
+p { font-size: 20px; margin-bottom: 1rem; margin-top: 1rem;}
+
+a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* =========================================
+   BOTÕES
+========================================= */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--raio);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  font-size: 25px;
+}
+
+.btn-primary {
+  background-color: var(--cor-primaria);
+  color: #fff;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--cor-primaria-escura);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   CABEÇALHO / NAVEGAÇÃO
+========================================= */
+.site-header {
+  background-image: linear-gradient(to bottom, #ff9898, #ffb8b8);
+  border-bottom: 1px solid var(--cor-borda);
+  position: relative; /* ou static */
+  top: auto;          /* remove o efeito de fixar */
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column; /* empilha logo e menu */
+  align-items: center;    /* centraliza horizontalmente */
+}
+
+.logo {
+  margin: 0 auto;
+}
+
+.logo img {
+  width: 650px;   /* menor largura */
+  height: 350px;   /* mantém proporção */
+  display: block;
+  margin-left: 0; /* cola no canto esquerdo */
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+}
+
+.main-nav a {
+  color: var(--cor-texto);
+  font-weight: 500;
+  font-size: 25px;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  color: var(--cor-primaria);
+  border-bottom-color: var(--cor-primaria);
+  text-decoration: none;
+}
+
+.menu-toggle-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.menu-toggle-input:focus-visible ~ .menu-toggle {
+  outline: 2px solid var(--cor-primaria-escura);
+  outline-offset: 2px;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--cor-primaria-escura);
+  border-radius: 2px;
+}
+
+/* =========================================
+   HERO
+========================================= */
+.hero {
+  background-color: #ffdbdb;
+  padding: 5rem 0;
+  text-align: center;
+  color: #402520;
+}
+.hero h1,
+.hero p {
+  color: #402520;
+}
+
+.hero p {
+  max-width: 560px;
+  margin: 0 auto 1.5rem;
+  color: #402520;
+}
+
+/* =========================================
+   SEÇÕES GERAIS
+========================================= */
+main section {
+  padding: 3rem 0;
+}
+
+.page-intro {
+  padding-bottom: 1.5rem;
+}
+
+.page-intro p {
+  color: var(--cor-texto-claro);
+}
+
+/* =========================================
+   CARDS
+========================================= */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: #ffe9e9;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+  box-shadow: var(--sombra);
+}
+
+.servico .preco {
+  font-weight: 700;
+  color: var(--cor-primaria-escura);
+  margin-top: 0.5rem;
+}
+
+.page-intro p {
+  color: #402520;
+}
+
+.cta-box {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.cta-box p {
+  color: var(--cor-texto-claro);
+  color: #402520;
+}
+
+/* =========================================
+   TABELA DE HORÁRIOS
+========================================= */
+.tabela-horarios {
+  width: 60%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #fffbfb;
+  box-shadow: var(--sombra);
+  border-radius: var(--raio);
+  overflow: hidden;
+}
+
+.tabela-horarios caption {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  background-color: #ffcbcb;
+  font-size: 25px;
+  color: #402520;
+}
+
+.tabela-horarios thead th {
+  font-weight: bold;
+  background-color: #ffe0e0;
+  color: #402520;
+  font-size: 20px;
+}
+
+.tabela-horarios tbody th {
+  font-weight: normal;
+  color: #402520;
+  font-size: 20px;
+}
+
+.tabela-horarios td {
+  font-weight: normal;
+  padding: 0.75rem 1rem;
+  border-bottom: none;
+  text-align: center;
+  color: #402520;
+  font-size: 20px;
+}
+
+.tabela-horarios tbody tr:nth-child(odd) {
+  background-color: #fff5f5;
+}
+
+/* =========================================
+   FORMULÁRIO
+========================================= */
+.form-section form {
+  max-width: 640px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 2rem;
+  box-shadow: var(--sombra);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  font-size: 25px;
+}
+
+input, select, textarea {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 20px;
+  background-color: #fff;
+  color: var(--cor-texto);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(184, 73, 122, 0.15);
+}
+
+input:invalid:not(:placeholder-shown), select:invalid, textarea:invalid:not(:placeholder-shown) {
+  border-color: var(--cor-erro);
+}
+
+.aviso-horario {
+  font-size: 0.85rem;
+  color: var(--cor-texto-claro);
+  margin-top: -0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+/* =========================================
+   RODAPÉ
+========================================= */
+.site-footer {
+  background-color: var(--cor-primaria-escura);
+  color: #fff;
+  padding: 1.75rem 0;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin-bottom: 0.25rem;
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+@media (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    margin-left: auto;
+    position: static;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .menu-toggle-input:checked ~ .main-nav {
+    max-height: 300px;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 1.25rem 1rem;
+  }
+
+  .main-nav li {
+    border-bottom: 1px solid var(--cor-borda);
+  }
+
+  .main-nav li:last-child {
+    border-bottom: none;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 0.75rem 0;
+  }
+
+  .hero h1 { font-size: 1.8rem; }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-section form {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 { font-size: 1.6rem; }
+  .hero { padding: 2.5rem 0; }
+}
