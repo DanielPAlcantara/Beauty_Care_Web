@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- 
+    Aqui ficam as informações que o navegador precisa saber sobre a página,
+    mas que não aparecem visualmente para quem está navegando.
+  -->
   <meta charset="UTF-8">
+  <!-- Garante que a página se ajuste bem a diferentes tamanhos de tela, como celulares e tablets -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agendamento | Beauty Care</title>
+  <!-- Uma breve descrição da página, usada por mecanismos de busca como o Google -->
   <meta name="description" content="Solicite seu horário no Salão Beauty Care preenchendo o formulário de agendamento.">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css"> <!-- Aqui é onde a página busca o arquivo de estilo, responsável pela aparência -->
 </head>
 <body>
 
+  <!-- 
+    CABEÇALHO DA PÁGINA
+    Contém a logo do salão e o menu que leva às outras páginas do site.
+  -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">
         <img src="img/logo.png" alt="Beauty Care">
       </a>
 
+      <!-- 
+        Este trecho cria o menu "sanduíche" (ícone com três linhas) que aparece no celular.
+        Como o uso de JavaScript não é permitido neste trabalho, o efeito de abrir e fechar
+        o menu foi feito apenas com HTML e CSS, aproveitando o comportamento de uma checkbox.
+      -->
       <input type="checkbox" id="menuToggle" class="menu-toggle-input">
       <label for="menuToggle" class="menu-toggle" aria-label="Abrir ou fechar menu">
         <span></span>
@@ -22,10 +37,12 @@
         <span></span>
       </label>
 
+      <!-- Menu principal com os links de navegação do site -->
       <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
         <ul>
           <li><a href="index.html">Início</a></li>
           <li><a href="servicos.html">Serviços</a></li>
+          <!-- "aria-current" avisa aos leitores de tela que esta é a página em que a pessoa está -->
           <li><a href="agendamento.html" aria-current="page">Agendamento</a></li>
         </ul>
       </nav>
@@ -33,22 +50,39 @@
   </header>
 
   <main>
+    <!-- 
+      INTRODUÇÃO DA PÁGINA
+      Um título e uma breve explicação do que a pessoa deve fazer aqui.
+    -->
     <section class="page-intro container">
       <h1>Solicitar agendamento</h1>
       <p>Preencha o formulário abaixo. Entraremos em contato para confirmar o horário.</p>
     </section>
 
+    <!-- 
+      SEÇÃO DO FORMULÁRIO
+      É aqui que a pessoa preenche seus dados para solicitar um horário no salão.
+    -->
     <section class="container form-section" aria-labelledby="form-titulo">
+      <!-- 
+        Este título não aparece na tela (a classe "sr-only" o esconde visualmente),
+        mas ajuda pessoas que usam leitores de tela a entenderem do que se trata esta parte da página.
+      -->
       <h2 id="form-titulo" class="sr-only">Formulário de agendamento</h2>
 
       <form id="formAgendamento">
 
+        <!-- Campo para o nome da pessoa. É obrigatório e precisa ter, no mínimo, 3 letras -->
         <div class="form-group">
           <label for="nome">Nome *</label>
           <input type="text" id="nome" name="nome" required minlength="3"
                  placeholder="Digite seu nome completo">
         </div>
 
+        <!-- 
+          Campo para telefone fixo. É opcional, mas se a pessoa preencher, precisa seguir 
+          o formato de telefone com DDD, como (27) 3333-3333.
+        -->
         <div class="form-group">
           <label for="telefoneFixo">Telefone</label>
           <input type="tel" id="telefoneFixo" name="telefoneFixo"
@@ -56,6 +90,11 @@
                  placeholder="(27) 3333-3333">
         </div>
 
+        <!-- 
+          Campo para celular. Diferente do telefone fixo, este é obrigatório, e aceita
+          números com 8 ou 9 dígitos depois do DDD, já que hoje em dia os celulares
+          costumam ter o nono dígito.
+        -->
         <div class="form-group">
           <label for="celular">Celular *</label>
           <input type="tel" id="celular" name="celular" required
@@ -63,12 +102,20 @@
                  placeholder="(27) 99999-9999">
         </div>
 
+        <!-- 
+          Campo de e-mail. É obrigatório, e o próprio navegador já verifica se o texto 
+          digitado tem a "cara" de um e-mail válido, por conta do type="email".
+        -->
         <div class="form-group">
           <label for="email">E-mail *</label>
           <input type="email" id="email" name="email" required
                  placeholder="seuemail@exemplo.com">
         </div>
 
+        <!-- 
+          Lista de serviços oferecidos pelo salão. A pessoa escolhe uma opção 
+          entre as disponíveis, e o campo é obrigatório.
+        -->
         <div class="form-group">
           <label for="servico">Serviço *</label>
           <select id="servico" name="servico" required>
@@ -79,22 +126,21 @@
             <option value="manicure">Manicure</option>
             <option value="pedicure">Pedicure</option>
             <option value="escova-hidratacao">Escova e hidratação</option>
-            <option value="outro">Outro</option>
           </select>
         </div>
 
-        <div class="form-group">
-          <label for="outroServico">Caso tenha selecionado "Outro", descreva o serviço</label>
-          <input type="text" id="outroServico" name="outroServico"
-                 placeholder="Descreva o serviço desejado (opcional)">
-        </div>
-
+        <!-- 
+          Aqui, data e horário ficam lado a lado (graças à classe "form-row"),
+          para deixar o formulário mais organizado visualmente.
+        -->
         <div class="form-row">
+          <!-- Campo de data: o navegador já mostra um calendário para facilitar a escolha -->
           <div class="form-group">
             <label for="data">Data *</label>
             <input type="date" id="data" name="data" required>
           </div>
 
+          <!-- Campo de horário: lista fixa de horários disponíveis, em blocos de uma hora -->
           <div class="form-group">
             <label for="horario">Horário *</label>
             <select id="horario" name="horario" required>
@@ -112,19 +158,29 @@
             </select>
           </div>
         </div>
+        <!-- 
+          Este aviso serve apenas para informar as regras de funcionamento do salão.
+          A página não impede que alguém escolha um horário de domingo, por exemplo.
+        -->
         <p class="aviso-horario">Sábados: atendimento até as 17h. Não atendemos aos domingos.</p>
 
+        <!-- Campo de observações, opcional, com limite de 300 caracteres -->
         <div class="form-group">
           <label for="observacoes">Observações</label>
           <textarea id="observacoes" name="observacoes" rows="4" maxlength="300"
                     placeholder="Alguma preferência ou observação? (opcional)"></textarea>
         </div>
 
+        <!-- Botão para enviar o formulário -->
         <button type="submit" class="btn btn-primary">Enviar solicitação</button>
       </form>
     </section>
   </main>
 
+  <!-- 
+    RODAPÉ DA PÁGINA
+    Traz informações de direitos autorais e os dados de contato e endereço do salão.
+  -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>&copy; 2026 Salão Beauty Care. Todos os direitos reservados.</p>

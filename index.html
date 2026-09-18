@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- Informações que o navegador usa para configurar a página, mas que não aparecem na tela -->
   <meta charset="UTF-8">
+  <!-- Faz a página se adaptar bem a telas de diferentes tamanhos, como celulares e tablets -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Início | Beauty Care</title>
+  <!-- Breve descrição da página, usada por mecanismos de busca como o Google -->
   <meta name="description" content="Agende seu horário no Salão Beauty Care. Cortes, coloração, manicure e muito mais.">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css"> <!-- Arquivo responsável pela aparência visual da página -->
 </head>
 <body>
 
+  <!-- 
+    CABEÇALHO DA PÁGINA
+    Traz a logo do salão e o menu de navegação, presente em todas as páginas do site.
+  -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">
         <img src="img/logo.png" alt="Beauty Care">
       </a>
 
+      <!-- 
+        Menu "sanduíche" para dispositivos móveis, feito apenas com HTML e CSS, usando o comportamento de uma checkbox para abrir e fechar.
+      -->
       <input type="checkbox" id="menuToggle" class="menu-toggle-input">
       <label for="menuToggle" class="menu-toggle" aria-label="Abrir ou fechar menu">
         <span></span>
@@ -22,8 +32,10 @@
         <span></span>
       </label>
 
+      <!-- Links de navegação para as demais páginas do site -->
       <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
         <ul>
+          <!-- "aria-current" informa aos leitores de tela que esta é a página em que a pessoa está -->
           <li><a href="index.html" aria-current="page">Início</a></li>
           <li><a href="servicos.html">Serviços</a></li>
           <li><a href="agendamento.html">Agendamento</a></li>
@@ -33,6 +45,11 @@
   </header>
 
   <main>
+    <!-- 
+      SEÇÃO DE DESTAQUE (HERO)
+      É o primeiro conteúdo visível da página, com uma mensagem de boas-vindas 
+      e um botão que leva direto para o agendamento.
+    -->
     <section class="hero">
       <div class="container hero-inner">
         <h1>Bem-vinda(o) ao Salão Beauty Care</h1>
@@ -41,6 +58,10 @@
       </div>
     </section>
 
+    <!-- 
+      SEÇÃO "SOBRE NÓS"
+      Um breve texto explicando o que é o salão e quais serviços oferece.
+    -->
     <section class="sobre container" aria-labelledby="sobre-titulo">
       <h2 id="sobre-titulo">Sobre nós</h2>
       <p>
@@ -50,6 +71,10 @@
       </p>
     </section>
 
+    <!-- 
+      SEÇÃO DE DESTAQUES
+      Três cartões apresentando os principais diferenciais do salão.
+    -->
     <section class="destaques container" aria-labelledby="destaques-titulo">
       <h2 id="destaques-titulo">Por que agendar conosco?</h2>
       <div class="cards-grid">
@@ -68,9 +93,14 @@
       </div>
     </section>
 
+    <!-- 
+      SEÇÃO DE HORÁRIOS
+      Uma tabela mostrando os dias e horários de funcionamento do salão.
+    -->
     <section class="horarios container" aria-labelledby="horarios-titulo">
       <h2 id="horarios-titulo">Horários de atendimento</h2>
       <table class="tabela-horarios">
+        <!-- A legenda descreve o conteúdo da tabela para quem usa leitor de tela -->
         <caption>Funcionamento semanal</caption>
         <thead>
           <tr>
@@ -80,6 +110,7 @@
         </thead>
         <tbody>
           <tr>
+            <!-- "scope='row'" indica que este cabeçalho se refere à linha inteira -->
             <th scope="row">Segunda a sexta</th>
             <td>09h às 19h</td>
           </tr>
@@ -96,6 +127,10 @@
     </section>
   </main>
 
+  <!-- 
+    RODAPÉ DA PÁGINA
+    Traz informações de direitos autorais e os dados de contato e endereço do salão.
+  -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>&copy; 2026 Salão Beauty Care. Todos os direitos reservados.</p>

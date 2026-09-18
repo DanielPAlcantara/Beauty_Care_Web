@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- Informações que o navegador usa para configurar a página, mas que não aparecem na tela -->
   <meta charset="UTF-8">
+  <!-- Faz a página se adaptar bem a telas de diferentes tamanhos, como celulares e tablets -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Serviços | Beauty Care</title>
+  <!-- Breve descrição da página, usada por mecanismos de busca como o Google -->
   <meta name="description" content="Conheça os serviços do Salão Beauty Care: cortes, coloração, manicure, pedicure e tratamentos.">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css"> <!-- Arquivo responsável pela aparência visual da página -->
 </head>
 <body>
 
+  <!-- 
+    CABEÇALHO DA PÁGINA
+    Traz a logo do salão e o menu de navegação, presente em todas as páginas do site.
+  -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">
         <img src="img/logo.png" alt="Beauty Care">
       </a>
 
+      <!-- 
+        Menu "sanduíche" para dispositivos móveis, feito apenas com HTML e CSS 
+        (sem JavaScript), usando o comportamento de uma checkbox para abrir e fechar.
+      -->
       <input type="checkbox" id="menuToggle" class="menu-toggle-input">
       <label for="menuToggle" class="menu-toggle" aria-label="Abrir ou fechar menu">
         <span></span>
@@ -22,9 +33,11 @@
         <span></span>
       </label>
 
+      <!-- Links de navegação para as demais páginas do site -->
       <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
         <ul>
           <li><a href="index.html">Início</a></li>
+          <!-- "aria-current" informa aos leitores de tela que esta é a página em que a pessoa está -->
           <li><a href="servicos.html" aria-current="page">Serviços</a></li>
           <li><a href="agendamento.html">Agendamento</a></li>
         </ul>
@@ -33,11 +46,19 @@
   </header>
 
   <main>
+    <!-- 
+      INTRODUÇÃO DA PÁGINA
+      Um título e uma breve explicação sobre o que a pessoa vai encontrar aqui.
+    -->
     <section class="page-intro container">
       <h1>Nossos serviços</h1>
       <p>Confira as opções disponíveis. Todos os valores podem ser confirmados no momento do agendamento.</p>
     </section>
 
+    <!-- 
+      LISTA DE SERVIÇOS
+      Cada serviço é apresentado como um cartão, com nome, descrição e preço inicial.
+    -->
     <section class="servicos-lista container" aria-label="Lista de serviços">
       <div class="cards-grid">
         <article class="card servico">
@@ -77,6 +98,11 @@
         </article>
       </div>
 
+      <!-- 
+        CHAMADA PARA AÇÃO (CTA)
+        Um convite final para levar a pessoa até a página de agendamento, 
+        depois de ela já ter conhecido os serviços.
+      -->
       <div class="cta-box">
         <p>Encontrou o serviço ideal?</p>
         <a href="agendamento.html" class="btn btn-primary">Solicitar agendamento</a>
@@ -84,6 +110,10 @@
     </section>
   </main>
 
+  <!-- 
+    RODAPÉ DA PÁGINA
+    Traz informações de direitos autorais e os dados de contato e endereço do salão.
+  -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>&copy; 2026 Salão Beauty Care. Todos os direitos reservados.</p>
