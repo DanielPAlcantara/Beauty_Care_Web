@@ -8,7 +8,7 @@
   <title>Início | Beauty Care</title>
   <!-- Breve descrição da página, usada por mecanismos de busca como o Google -->
   <meta name="description" content="Agende seu horário no Salão Beauty Care. Cortes, coloração, manicure e muito mais.">
-  <link rel="stylesheet" href="css/style.css"> <!-- Arquivo responsável pela aparência visual da página -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Arquivo responsável pela aparência visual da página -->
 </head>
 <body>
 
@@ -18,8 +18,8 @@
   -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo">
-        <img src="img/logo.png" alt="Beauty Care">
+      <a href="{{ url_for('Index.Index_home') }}" class="logo">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Beauty Care">
       </a>
 
       <!-- 
@@ -36,9 +36,9 @@
       <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
         <ul>
           <!-- "aria-current" informa aos leitores de tela que esta é a página em que a pessoa está -->
-          <li><a href="index.html" aria-current="page">Início</a></li>
-          <li><a href="servicos.html">Serviços</a></li>
-          <li><a href="agendamento.html">Agendamento</a></li>
+          <li><a href="{{ url_for('Index.Index_home') }}" aria-current="page">Início</a></li>
+          <li><a href="{{ url_for('Servicos.Servicos_home') }}">Serviços</a></li>
+          <li><a href="{{ url_for('Agendamento.Agendamento_home') }}">Agendamento</a></li>
         </ul>
       </nav>
     </div>
@@ -54,7 +54,7 @@
       <div class="container hero-inner">
         <h1>Bem-vinda(o) ao Salão Beauty Care</h1>
         <p>Transformamos cada visita em um momento de bem-estar.</p>
-        <a href="agendamento.html" class="btn btn-primary">Agendar agora</a>
+        <a href="{{ url_for('Agendamento.Agendamento_home') }}" class="btn btn-primary">Agendar agora</a>
       </div>
     </section>
 

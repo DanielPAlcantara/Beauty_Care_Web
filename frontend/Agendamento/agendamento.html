@@ -11,7 +11,7 @@
   <title>Agendamento | Beauty Care</title>
   <!-- Uma breve descrição da página, usada por mecanismos de busca como o Google -->
   <meta name="description" content="Solicite seu horário no Salão Beauty Care preenchendo o formulário de agendamento.">
-  <link rel="stylesheet" href="css/style.css"> <!-- Aqui é onde a página busca o arquivo de estilo, responsável pela aparência -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Aqui é onde a página busca o arquivo de estilo, responsável pela aparência -->
 </head>
 <body>
 
@@ -21,14 +21,14 @@
   -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo">
-        <img src="img/logo.png" alt="Beauty Care">
+      <a href="{{ url_for('Index.Index_home') }}" class="logo">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Beauty Care">
       </a>
 
       <!-- 
         Este trecho cria o menu "sanduíche" (ícone com três linhas) que aparece no celular.
-        Como o uso de JavaScript não é permitido neste trabalho, o efeito de abrir e fechar
-        o menu foi feito apenas com HTML e CSS, aproveitando o comportamento de uma checkbox.
+        O efeito de abrir e fechar este menu foi feito apenas com HTML e CSS,
+        aproveitando o comportamento de uma checkbox, sem precisar de JavaScript.
       -->
       <input type="checkbox" id="menuToggle" class="menu-toggle-input">
       <label for="menuToggle" class="menu-toggle" aria-label="Abrir ou fechar menu">
@@ -40,10 +40,10 @@
       <!-- Menu principal com os links de navegação do site -->
       <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
         <ul>
-          <li><a href="index.html">Início</a></li>
-          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="{{ url_for('Index.Index_home') }}">Início</a></li>
+          <li><a href="{{ url_for('Servicos.Servicos_home') }}">Serviços</a></li>
           <!-- "aria-current" avisa aos leitores de tela que esta é a página em que a pessoa está -->
-          <li><a href="agendamento.html" aria-current="page">Agendamento</a></li>
+          <li><a href="{{ url_for('Agendamento.Agendamento_home') }}" aria-current="page">Agendamento</a></li>
         </ul>
       </nav>
     </div>
@@ -70,8 +70,9 @@
       -->
       <h2 id="form-titulo" class="sr-only">Formulário de agendamento</h2>
 
-      <form id="formAgendamento">
-
+      <!-- O JavaScript valida os campos e controla o cadastro e a edição;
+           novalidate desativa as mensagens automáticas de validação do navegador. -->
+      <form id="formAgendamento" novalidate>
         <!-- Campo para o nome da pessoa. É obrigatório e precisa ter, no mínimo, 3 letras -->
         <div class="form-group">
           <label for="nome">Nome *</label>
@@ -103,8 +104,8 @@
         </div>
 
         <!-- 
-          Campo de e-mail. É obrigatório, e o próprio navegador já verifica se o texto 
-          digitado tem a "cara" de um e-mail válido, por conta do type="email".
+          Campo de e-mail obrigatório. O type="email" indica o formato esperado,
+          enquanto o JavaScript apresenta mensagens personalizadas de validação.
         -->
         <div class="form-group">
           <label for="email">E-mail *</label>
@@ -145,7 +146,7 @@
             <label for="horario">Horário *</label>
             <select id="horario" name="horario" required>
               <option value="">Selecione</option>
-              <option value="9:00">09:00 - 10:00</option>
+              <option value="09:00">09:00 - 10:00</option>
               <option value="10:00">10:00 - 11:00</option>
               <option value="11:00">11:00 - 12:00</option>
               <option value="12:00">12:00 - 13:00</option>
@@ -159,8 +160,8 @@
           </div>
         </div>
         <!-- 
-          Este aviso serve apenas para informar as regras de funcionamento do salão.
-          A página não impede que alguém escolha um horário de domingo, por exemplo.
+          Este aviso informa as regras de funcionamento do salão.
+          O JavaScript impede agendamentos aos domingos e fora do horário de sábado.
         -->
         <p class="aviso-horario">Sábados: atendimento até as 17h. Não atendemos aos domingos.</p>
 
@@ -175,6 +176,62 @@
         <button type="submit" class="btn btn-primary">Enviar solicitação</button>
       </form>
     </section>
+    <br><br>
+    <!--
+      LISTA DE AGENDAMENTOS
+      Exibe os registros carregados do JSON e as alterações feitas pelo usuário.
+      O JavaScript atualiza a tabela sem precisar recarregar a página.
+    -->
+    <section class="container lista-section" aria-labelledby="lista-titulo">
+      <h2 id="lista-titulo">Agendamentos</h2>
+
+      <!-- Agrupa os controles de consulta e a tabela em um cartão visual. -->
+      <div class="lista-card">
+        <!--
+          BARRA DE BUSCA E FILTRO
+          Permite pesquisar agendamentos pelo texto digitado e selecionar um serviço.
+          O filtro de serviços recebe suas opções pelo JavaScript.
+        -->
+        <div class="lista-toolbar">
+          <!-- O rótulo fica oculto visualmente, mas continua acessível a leitores de tela. -->
+          <label for="busca" class="sr-only">Buscar agendamentos</label>
+          <input type="search" id="busca" placeholder="Buscar por nome, e-mail, celular...">
+
+          <!-- Mostra apenas os agendamentos do serviço escolhido, ou todos por padrão. -->
+          <label for="filtroServico" class="sr-only">Filtrar por serviço</label>
+          <select id="filtroServico">
+            <option value="">Todos os serviços</option>
+          </select>
+        </div>
+
+        <!--
+          TABELA DE AGENDAMENTOS
+          A classe "tabela-scroll" permite rolagem horizontal em telas pequenas.
+          Os cabeçalhos com botões permitem ordenar os registros ao clicar.
+        -->
+        <div class="tabela-scroll">
+          <table class="tabela-agendamentos">
+            <thead>
+              <tr>
+                <th data-ordem="nome" aria-sort="none"><button type="button">Nome</button></th>
+                <th data-ordem="servico" aria-sort="none"><button type="button">Serviço</button></th>
+                <th data-ordem="data" aria-sort="ascending"><button type="button">Data</button></th>
+                <th data-ordem="horario" aria-sort="none"><button type="button">Horário</button></th>
+                <th>Celular</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <!-- O JavaScript preenche esta área com os registros e cria os botões
+                 de editar e cancelar para cada agendamento. -->
+            <tbody id="lista"></tbody>
+          </table>
+        </div>
+
+        <!-- Mostra quantos agendamentos estão visíveis após a busca e o filtro.
+             aria-live permite anunciar mudanças para tecnologias assistivas. -->
+        <p id="contador" class="contador" aria-live="polite"></p>
+      </div>
+    </section>
   </main>
 
   <!-- 
@@ -187,6 +244,9 @@
       <p>Rua das Flores, 123, Centro de Vitória - ES | (27) 99999-9999</p>
     </div>
   </footer>
-
+  <!-- Carrega o JavaScript responsável pelas validações, pelo CRUD, pelos filtros,
+       pela ordenação e pela comunicação com o JSON por meio do Flask.
+       defer executa o script depois que o HTML tiver sido interpretado. -->
+  <script src="{{ url_for('static', filename='js/Agendamento.js') }}" defer></script>
 </body>
 </html>

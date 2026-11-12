@@ -467,3 +467,224 @@ input:invalid:not(:placeholder-shown), select:invalid, textarea:invalid:not(:pla
   h1 { font-size: 1.6rem; }
   .hero { padding: 2.5rem 0; }
 }
+
+/* =========================================
+   LISTAGEM DE AGENDAMENTOS
+   Define as cores próprias da lista e o espaço abaixo da seção.
+========================================= */
+.lista-section {
+  --rosa-fundo: #fff8f8;
+  --rosa-hover: #fdeeee;
+  --rosa-borda: #f3d4d4;
+  --cor-principal: #cd5c5c;
+  --cor-titulo: #a64a4a;
+  margin-bottom: 2rem;
+}
+
+/* Cartão que envolve os filtros e a tabela de agendamentos */
+.lista-card {
+  background: #fff;
+  border: 1px solid var(--rosa-borda);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(166, 74, 74, 0.08);
+  padding: 1.25rem;
+}
+
+/* Organiza o campo de busca e o filtro de serviços lado a lado, permitindo quebra de linha */
+.lista-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.lista-toolbar input,
+.lista-toolbar select {
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--rosa-borda);
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+}
+/* Faz a busca ocupar o espaço disponível, respeitando uma largura base */
+.lista-toolbar input { flex: 1 1 240px; }
+/* Destaca a busca e o filtro quando selecionados pelo usuário */
+.lista-toolbar input:focus,
+.lista-toolbar select:focus {
+  outline: 2px solid var(--cor-principal);
+  outline-offset: 1px;
+}
+
+/* Permite rolagem horizontal da tabela em telas estreitas, sem quebrar o layout */
+.tabela-scroll { overflow-x: auto; }
+
+/* Define a largura mínima da tabela e une as bordas das células */
+.tabela-agendamentos {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+/* Estiliza os títulos das colunas para facilitar a identificação dos dados */
+.tabela-agendamentos th {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 2px solid var(--cor-principal);
+  color: var(--cor-titulo);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+/* Aplica espaçamento e separadores às células dos agendamentos */
+.tabela-agendamentos td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--rosa-borda);
+}
+/* Alterna o fundo das linhas pares e destaca a linha sob o mouse */
+.tabela-agendamentos tbody tr:nth-child(even) { background: var(--rosa-fundo); }
+.tabela-agendamentos tbody tr:hover { background: var(--rosa-hover); }
+/* Centraliza a mensagem exibida quando não há registros ou resultados de busca */
+.tabela-agendamentos .vazio {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+}
+
+/* Permite clicar nos títulos das colunas para ordenar os registros */
+.tabela-agendamentos th button {
+  all: unset;
+  cursor: pointer;
+}
+/* Exibe um contorno ao navegar pelos botões de ordenação com o teclado */
+.tabela-agendamentos th button:focus-visible {
+  outline: 2px solid var(--cor-principal);
+  outline-offset: 2px;
+}
+/* Exibe uma seta dupla enquanto a coluna não possui direção de ordenação definida */
+.tabela-agendamentos th button::after {
+  content: " ↕";
+  opacity: 0.35;
+}
+/* Troca a seta conforme a ordenação crescente ou decrescente */
+.tabela-agendamentos th[aria-sort="ascending"] button::after  { content: " ↑"; opacity: 1; }
+.tabela-agendamentos th[aria-sort="descending"] button::after { content: " ↓"; opacity: 1; }
+
+/* Destaca o nome do serviço em uma etiqueta arredondada dentro da tabela */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--rosa-hover);
+  color: var(--cor-titulo);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Estiliza os botões de editar e cancelar agendamentos */
+.btn-tabela {
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1px solid var(--cor-principal);
+  background: #fff;
+  color: var(--cor-principal);
+}
+/* Inverte as cores dos botões ao passar o mouse */
+.btn-tabela:hover { background: var(--cor-principal); color: #fff; }
+/* Separa visualmente o botão Editar do botão Cancelar */
+.btn-editar { margin-right: 0.35rem; }
+
+/* Exibe abaixo da tabela a quantidade de agendamentos encontrados */
+.contador {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* Exibe abaixo dos campos as mensagens de erro geradas pelo JavaScript */
+.erro {
+  display: block;
+  min-height: 0;
+  margin-top: 0.3rem;
+  color: #b3261c;
+  font-size: 0.85rem;
+}
+
+/* Destaca com fundo e borda vermelhos os campos marcados como inválidos */
+.form-group input[aria-invalid="true"],
+.form-group select[aria-invalid="true"],
+.form-group textarea[aria-invalid="true"] {
+  border-color: #b3261c;
+  background: #fff6f5;
+}
+
+/* Mostra a confirmação de cadastro ou edição acima do botão do formulário */
+.mensagem-form {
+  margin: 0 0 1rem;
+  font-weight: 600;
+  color: #2e7d32;
+}
+/* Oculta o espaço da mensagem quando não há texto a exibir */
+.mensagem-form:empty { display: none; }
+
+/* =========================================
+   MENSAGENS DO CARREGAMENTO DO JSON
+   Informa se os agendamentos estão carregando, se foram
+   carregados ou se ocorreu um erro de rede/HTTP.
+========================================= */
+.mensagem-fetch {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* Usa tons vermelhos para indicar falha no carregamento */
+.mensagem-fetch.erro {
+  background-color: #fff0f0;
+  color: var(--cor-erro);
+}
+
+/* Usa tons verdes para indicar carregamento concluído */
+.mensagem-fetch.sucesso {
+  background-color: #edf8ef;
+  color: var(--cor-sucesso);
+}
+
+/* Usa uma cor neutra enquanto a requisição está em andamento */
+.mensagem-fetch.carregando {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-texto);
+}
+
+/* Posiciona o texto da mensagem à esquerda e o botão de fechar à direita */
+.mensagem-fetch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+/* Botão X que permite dispensar a mensagem sem atualizar a página */
+.fechar-fetch {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 5px;
+  line-height: 1;
+}
+
+/* Reduz a opacidade do X ao passar o mouse, indicando interatividade */
+.fechar-fetch:hover {
+  opacity: 0.6;
+}
+
+/* Mantém o botão X visível e acessível na navegação por teclado */
+.fechar-fetch:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}

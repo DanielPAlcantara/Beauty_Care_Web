@@ -1,0 +1,123 @@
+[
+    {
+        "celular": "(27) 99999-1000",
+        "data": "2026-11-20",
+        "email": "cliente1@exemplo.com",
+        "horario": "09:00",
+        "id": 1,
+        "nome": "Ana Souza",
+        "observacoes": "Registro demonstrativo para testes.",
+        "servico": "corte-feminino",
+        "telefoneFixo": ""
+    },
+    {
+        "celular": "(27) 99999-1001",
+        "data": "2026-11-21",
+        "email": "cliente2@exemplo.com",
+        "horario": "10:00",
+        "id": 2,
+        "nome": "Beatriz Lima",
+        "observacoes": "Registro demonstrativo para testes.",
+        "servico": "corte-feminino",
+        "telefoneFixo": ""
+    },
+    {
+        "celular": "(27) 99999-1002",
+        "data": "2026-11-23",
+        "email": "cliente3@exemplo.com",
+        "horario": "11:00",
+        "id": 3,
+        "nome": "Carla Martins",
+        "observacoes": "Registro demonstrativo para testes.",
+        "servico": "corte-feminino",
+        "telefoneFixo": ""
+    },
+    {
+        "celular": "(27) 99999-1003",
+        "data": "2026-11-24",
+        "email": "cliente4@exemplo.com",
+        "horario": "12:00",
+        "id": 4,
+        "nome": "Daniela Rocha",
+        "observacoes": "Registro demonstrativo para testes.",
+        "servico": "corte-feminino",
+        "telefoneFixo": ""
+    },
+    {
+        "celular": "(27) 99999-1004",
+        "data": "2026-11-25",
+        "email": "cliente5@exemplo.com",
+        "horario": "13:00",
+        "id": 5,
+        "nome": "Eduarda Alves",
+        "observacoes": "Registro demonstrativo para testes.",
+        "servico": "corte-feminino",
+        "telefoneFixo": ""
+    },
+    {
+        "celular": "(27) 99999-1005",
+        "data": "2026-11-26",
+        "email": "cliente6@exemplo.com",
+        "horario": "14:00",
+        "id": 6,
+        "nome": "Fernanda Costa",
+        "observacoes": "Registro demonstrativo para testes.",
+        "servico": "corte-feminino",
+        "telefoneFixo": ""
+    },
+    {
+        "celular": "(27) 99999-1006",
+        "data": "2026-11-27",
+        "email": "cliente7@exemplo.com",
+        "horario": "15:00",
+        "id": 7,
+        "nome": "Gabriela Melo",
+        "observacoes": "Registro demonstrativo para testes.",
+        "servico": "corte-feminino",
+        "telefoneFixo": ""
+    },
+    {
+        "celular": "(27) 99999-1007",
+        "data": "2026-11-28",
+        "email": "cliente8@exemplo.com",
+        "horario": "09:00",
+        "id": 8,
+        "nome": "Helena Pereira",
+        "observacoes": "Registro demonstrativo para testes.",
+        "servico": "corte-feminino",
+        "telefoneFixo": ""
+    },
+    {
+        "celular": "(27) 99999-1008",
+        "data": "2026-11-30",
+        "email": "cliente9@exemplo.com",
+        "horario": "10:00",
+        "id": 9,
+        "nome": "Isabela Gomes",
+        "observacoes": "Registro demonstrativo para testes.",
+        "servico": "corte-feminino",
+        "telefoneFixo": ""
+    },
+    {
+        "celular": "(27) 99999-1009",
+        "data": "2026-12-01",
+        "email": "cliente10@exemplo.com",
+        "horario": "11:00",
+        "id": 10,
+        "nome": "Juliana Ribeiro",
+        "observacoes": "Registro demonstrativo para testes.",
+        "servico": "corte-feminino",
+        "telefoneFixo": ""
+    },
+    {
+        "celular": "(27) 99234-3084",
+        "data": "2026-11-30",
+        "email": "koboldunionPOGGERS@exemplo.com",
+        "horario": "11:00",
+        "id": 11,
+        "nome": "Daniel",
+        "observacoes": "",
+        "servico": "corte-masculino",
+        "telefoneFixo": ""
+    }
+]

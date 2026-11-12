@@ -8,7 +8,7 @@
   <title>Serviços | Beauty Care</title>
   <!-- Breve descrição da página, usada por mecanismos de busca como o Google -->
   <meta name="description" content="Conheça os serviços do Salão Beauty Care: cortes, coloração, manicure, pedicure e tratamentos.">
-  <link rel="stylesheet" href="css/style.css"> <!-- Arquivo responsável pela aparência visual da página -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Arquivo responsável pela aparência visual da página -->
 </head>
 <body>
 
@@ -18,8 +18,8 @@
   -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo">
-        <img src="img/logo.png" alt="Beauty Care">
+      <a href="{{ url_for('Index.Index_home') }}" class="logo">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Beauty Care">
       </a>
 
       <!-- 
@@ -36,10 +36,10 @@
       <!-- Links de navegação para as demais páginas do site -->
       <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
         <ul>
-          <li><a href="index.html">Início</a></li>
+          <li><a href="{{ url_for('Index.Index_home') }}">Início</a></li>
           <!-- "aria-current" informa aos leitores de tela que esta é a página em que a pessoa está -->
-          <li><a href="servicos.html" aria-current="page">Serviços</a></li>
-          <li><a href="agendamento.html">Agendamento</a></li>
+          <li><a href="{{ url_for('Servicos.Servicos_home') }}" aria-current="page">Serviços</a></li>
+          <li><a href="{{ url_for('Agendamento.Agendamento_home') }}">Agendamento</a></li>
         </ul>
       </nav>
     </div>
@@ -105,7 +105,7 @@
       -->
       <div class="cta-box">
         <p>Encontrou o serviço ideal?</p>
-        <a href="agendamento.html" class="btn btn-primary">Solicitar agendamento</a>
+        <a href="{{ url_for('Agendamento.Agendamento_home') }}" class="btn btn-primary">Solicitar agendamento</a>
       </div>
     </section>
   </main>
