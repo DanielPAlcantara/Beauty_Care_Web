@@ -108,27 +108,5 @@
         "observacoes": "Registro demonstrativo para testes.",
         "servico": "corte-feminino",
         "telefoneFixo": ""
-    },
-    {
-        "celular": "(27) 99234-3084",
-        "data": "2026-11-30",
-        "email": "koboldunionPOGGERS@exemplo.com",
-        "horario": "11:00",
-        "id": 11,
-        "nome": "Daniel",
-        "observacoes": "",
-        "servico": "corte-masculino",
-        "telefoneFixo": ""
-    },
-    {
-        "celular": "(27) 9992-0396",
-        "data": "2026-11-17",
-        "email": "mel@exemplo.com",
-        "horario": "15:00",
-        "id": 12,
-        "nome": "mel",
-        "observacoes": "",
-        "servico": "corte-feminino",
-        "telefoneFixo": ""
     }
 ]
