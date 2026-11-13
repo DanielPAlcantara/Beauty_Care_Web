@@ -119,5 +119,16 @@
         "observacoes": "",
         "servico": "corte-masculino",
         "telefoneFixo": ""
+    },
+    {
+        "celular": "(27) 9992-0396",
+        "data": "2026-11-17",
+        "email": "mel@exemplo.com",
+        "horario": "15:00",
+        "id": 12,
+        "nome": "mel",
+        "observacoes": "",
+        "servico": "corte-feminino",
+        "telefoneFixo": ""
     }
 ]

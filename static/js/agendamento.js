@@ -68,8 +68,8 @@ function criarTd(texto) {
 // Expressões regulares usadas para verificar os formatos de nome, telefones e e-mail.
 
 const REGEX_NOME = /^[A-Za-zÀ-ÿ' .-]+$/;
-const REGEX_TELEFONE_FIXO = /^\(?\d{2}\)?\s?\d{4}-?\d{4}$/;
-const REGEX_CELULAR = /^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/;
+const REGEX_TELEFONE_FIXO = /^(\(\d{2}\) \d{4}-\d{4}|\d{10})$/; // Aceita os formatos (27) 9999-9999 ou 2799999999
+const REGEX_CELULAR = /^(\(\d{2}\) \d{5}-\d{4}|\d{11})$/; // Aceita os formatos (27) 99999-9999 ou 27999999999
 const REGEX_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 // O navegador não deixa escolher datas passadas no calendário
@@ -139,7 +139,7 @@ function validar(dados) {
   if (!dados.celular) {
     erros.celular = 'Informe seu celular.';
   } else if (!REGEX_CELULAR.test(dados.celular)) {
-    erros.celular = 'Celular inválido. Use o formato (27) 99999-9999.';
+    erros.celular = 'Celular inválido. Use o formato (27) 99999-9999 ou 27999999999.';
   }
 
   // E-mail
